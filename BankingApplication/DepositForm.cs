@@ -20,39 +20,41 @@ namespace BankingApplication
 
         private void DepositButton_Click(object sender, EventArgs e)
         {
-            var sqlConnection = new SqlConnection("Data Source=DESKTOP-TRC58QD\\SQLEXPRESS;Initial Catalog=BankApp;Integrated Security=true;");
-            sqlConnection.Open();
-            LoginInfo.Balance +=  Int32.Parse(DepositMoneyTextBox.Text);
-            var insertCommand = new SqlCommand("Insert into [Transaction] values(@Account_Number,@Transaction_Type,@Transaction_Amount,@Balance,@Date)",sqlConnection);
-            insertCommand.Parameters.AddWithValue("@Account_Number",LoginInfo.AccountNumber);
-            insertCommand.Parameters.AddWithValue("@Transaction_Type", "Deposit");
-            insertCommand.Parameters.AddWithValue("@Transaction_Amount", DepositMoneyTextBox.Text);
-            insertCommand.Parameters.AddWithValue("@Balance", LoginInfo.Balance);
-            insertCommand.Parameters.AddWithValue("@Date",DateTime.Now);
+            try
+            {
+                if(DepositMoneyTextBox.Text == string.Empty)
+                {
+                    throw new Exception("Cannnot be Empty");
+                }
 
-            var updateCommand = new SqlCommand("update account_information set balance = "+LoginInfo.Balance+" where Email='"+LoginInfo.Email+"'", sqlConnection);
+                if (Int32.Parse(DepositMoneyTextBox.Text) <= 0)
+                {
+                    throw new Exception("Cannnot be Less than or Equal to Null");
+                }
 
-            insertCommand.ExecuteNonQuery();
-            updateCommand.ExecuteNonQuery();
-            sqlConnection.Close();
+                var sqlConnection = new SqlConnection("Data Source=" + Consants.database + ";Initial Catalog=BankApp;Integrated Security=true;");
+                sqlConnection.Open();
+                LoginInfo.Balance += Int32.Parse(DepositMoneyTextBox.Text);
+                var insertCommand = new SqlCommand("Insert into [Transaction] values(@Account_Number,@Transaction_Type,@Transaction_Amount,@Balance,@Date)", sqlConnection);
+                insertCommand.Parameters.AddWithValue("@Account_Number", LoginInfo.AccountNumber);
+                insertCommand.Parameters.AddWithValue("@Transaction_Type", "Deposit");
+                insertCommand.Parameters.AddWithValue("@Transaction_Amount", DepositMoneyTextBox.Text);
+                insertCommand.Parameters.AddWithValue("@Balance", LoginInfo.Balance);
+                insertCommand.Parameters.AddWithValue("@Date", DateTime.Now);
 
-            this.Close();
-            LoginInfo.OptionForm.Show();
-        }
+                var updateCommand = new SqlCommand("update account_information set balance = " + LoginInfo.Balance + " where Email='" + LoginInfo.Email + "'", sqlConnection);
 
-        private void BalanceLabel_Click(object sender, EventArgs e)
-        {
+                insertCommand.ExecuteNonQuery();
+                updateCommand.ExecuteNonQuery();
+                sqlConnection.Close();
 
-        }
-
-        private void DepositMoneyTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DepositMoneyLabel_Click(object sender, EventArgs e)
-        {
-
+                this.Close();
+                LoginInfo.OptionForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageLabel.Text = ex.Message;
+            }
         }
 
         private void DepositForm_Load(object sender, EventArgs e)

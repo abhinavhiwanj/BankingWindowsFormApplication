@@ -26,38 +26,53 @@ namespace BankingApplication
 
         private void WithDrawButton_Click(object sender, EventArgs e)
         {
-            var sqlConnection = new SqlConnection("Data Source=DESKTOP-TRC58QD\\SQLEXPRESS;Initial Catalog=BankApp;Integrated Security=true;");
-            sqlConnection.Open();
-            if (LoginInfo.Balance > Int32.Parse(WithDrawMoneyTextBox.Text))
+            try
             {
-                LoginInfo.Balance -= Int32.Parse(WithDrawMoneyTextBox.Text);
-                var insertCommand = new SqlCommand("Insert into [Transaction] values(@Account_Number,@Transaction_Type,@Transaction_Amount,@Balance,@Date)", sqlConnection);
-                insertCommand.Parameters.AddWithValue("@Account_Number", LoginInfo.AccountNumber);
-                insertCommand.Parameters.AddWithValue("@Transaction_Type", "WithDraw");
-                insertCommand.Parameters.AddWithValue("@Transaction_Amount", WithDrawMoneyTextBox.Text);
-                insertCommand.Parameters.AddWithValue("@Balance", LoginInfo.Balance);
-                insertCommand.Parameters.AddWithValue("@Date", DateTime.Now);
+                if (WithDrawMoneyTextBox.Text == string.Empty)
+                {
+                    throw new Exception("Cannnot be Empty");
+                }
 
-                var updateCommand = new SqlCommand("update account_information set balance = " + LoginInfo.Balance + " where Email='" + LoginInfo.Email + "'", sqlConnection);
+                if (Int32.Parse(WithDrawMoneyTextBox.Text) <= 0)
+                {
+                    throw new Exception("Cannnot be Less than or Equal to Null");
+                }
+                var sqlConnection = new SqlConnection("Data Source=" + Consants.database + ";Initial Catalog=BankApp;Integrated Security=true;");
+                sqlConnection.Open();
+                if (LoginInfo.Balance > Int32.Parse(WithDrawMoneyTextBox.Text))
+                {
+                    LoginInfo.Balance -= Int32.Parse(WithDrawMoneyTextBox.Text);
+                    var insertCommand = new SqlCommand("Insert into [Transaction] values(@Account_Number,@Transaction_Type,@Transaction_Amount,@Balance,@Date)", sqlConnection);
+                    insertCommand.Parameters.AddWithValue("@Account_Number", LoginInfo.AccountNumber);
+                    insertCommand.Parameters.AddWithValue("@Transaction_Type", "WithDraw");
+                    insertCommand.Parameters.AddWithValue("@Transaction_Amount", WithDrawMoneyTextBox.Text);
+                    insertCommand.Parameters.AddWithValue("@Balance", LoginInfo.Balance);
+                    insertCommand.Parameters.AddWithValue("@Date", DateTime.Now);
 
-                insertCommand.ExecuteNonQuery();
-                updateCommand.ExecuteNonQuery();
-                sqlConnection.Close();
+                    var updateCommand = new SqlCommand("update account_information set balance = " + LoginInfo.Balance + " where Email='" + LoginInfo.Email + "'", sqlConnection);
 
-                this.Close();
-                LoginInfo.OptionForm.Show();
+                    insertCommand.ExecuteNonQuery();
+                    updateCommand.ExecuteNonQuery();
+                    sqlConnection.Close();
+
+                    this.Hide();
+                    LoginInfo.OptionForm.Show();
+                }
+                else
+                {
+                    throw new Exception("Insufficent Balance");
+                }
             }
-            else
+            catch(Exception ex)
             {
-                MessageLabel.Text = "Insufficent Balance";
+                MessageLabel.Text = ex.Message;
             }
-           
         }
 
         private void BackButton_Click(object sender, EventArgs e)
         {
             LoginInfo.OptionForm.Show();
-            this.Close();
+            this.Hide();
         }
     }
 }

@@ -14,4 +14,8 @@ namespace BankingApplication
 
         public static OptionForm OptionForm = new OptionForm();
     }
+    public static class Consants
+    {
+        public static string database = "DESKTOP-TRC58QD\\SQLEXPRESS";
+    }
 }

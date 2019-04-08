@@ -44,7 +44,7 @@
             // MessageLabel
             // 
             this.MessageLabel.AutoSize = true;
-            this.MessageLabel.Location = new System.Drawing.Point(454, 134);
+            this.MessageLabel.Location = new System.Drawing.Point(322, 287);
             this.MessageLabel.Name = "MessageLabel";
             this.MessageLabel.Size = new System.Drawing.Size(0, 13);
             this.MessageLabel.TabIndex = 28;

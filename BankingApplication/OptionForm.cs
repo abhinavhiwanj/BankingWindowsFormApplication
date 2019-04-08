@@ -40,5 +40,11 @@ namespace BankingApplication
             new MoneyTransferForm().Show();
             this.Hide();
         }
+
+        private void LogOutButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new LoginForm().Show();
+        }
     }
 }

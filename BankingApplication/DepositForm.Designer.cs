@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BalanceMoneyLabel = new System.Windows.Forms.Label();
             this.BackButton = new System.Windows.Forms.Button();
+            this.MessageLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // DepositButton
@@ -53,7 +54,6 @@
             this.DepositMoneyTextBox.Name = "DepositMoneyTextBox";
             this.DepositMoneyTextBox.Size = new System.Drawing.Size(216, 20);
             this.DepositMoneyTextBox.TabIndex = 24;
-            this.DepositMoneyTextBox.TextChanged += new System.EventHandler(this.DepositMoneyTextBox_TextChanged);
             // 
             // DepositMoneyLabel
             // 
@@ -63,7 +63,6 @@
             this.DepositMoneyLabel.Size = new System.Drawing.Size(105, 13);
             this.DepositMoneyLabel.TabIndex = 22;
             this.DepositMoneyLabel.Text = "Money to be Deposit";
-            this.DepositMoneyLabel.Click += new System.EventHandler(this.DepositMoneyLabel_Click);
             // 
             // BalanceLabel
             // 
@@ -73,7 +72,6 @@
             this.BalanceLabel.Size = new System.Drawing.Size(46, 13);
             this.BalanceLabel.TabIndex = 21;
             this.BalanceLabel.Text = "Balance";
-            this.BalanceLabel.Click += new System.EventHandler(this.BalanceLabel_Click);
             // 
             // label1
             // 
@@ -103,11 +101,20 @@
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
+            // MessageLabel
+            // 
+            this.MessageLabel.AutoSize = true;
+            this.MessageLabel.Location = new System.Drawing.Point(291, 261);
+            this.MessageLabel.Name = "MessageLabel";
+            this.MessageLabel.Size = new System.Drawing.Size(0, 13);
+            this.MessageLabel.TabIndex = 36;
+            // 
             // DepositForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.MessageLabel);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.BalanceMoneyLabel);
             this.Controls.Add(this.DepositButton);
@@ -132,5 +139,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label BalanceMoneyLabel;
         private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.Label MessageLabel;
     }
 }

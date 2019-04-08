@@ -33,13 +33,14 @@
             this.DepositButton = new System.Windows.Forms.Button();
             this.WithdrawButton = new System.Windows.Forms.Button();
             this.MoneyTransferButton = new System.Windows.Forms.Button();
+            this.LogOutButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Consolas", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(151, 57);
+            this.label1.Location = new System.Drawing.Point(297, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(195, 32);
             this.label1.TabIndex = 15;
@@ -47,7 +48,7 @@
             // 
             // PassbookButton
             // 
-            this.PassbookButton.Location = new System.Drawing.Point(157, 116);
+            this.PassbookButton.Location = new System.Drawing.Point(303, 116);
             this.PassbookButton.Name = "PassbookButton";
             this.PassbookButton.Size = new System.Drawing.Size(189, 23);
             this.PassbookButton.TabIndex = 16;
@@ -57,7 +58,7 @@
             // 
             // DepositButton
             // 
-            this.DepositButton.Location = new System.Drawing.Point(157, 159);
+            this.DepositButton.Location = new System.Drawing.Point(303, 159);
             this.DepositButton.Name = "DepositButton";
             this.DepositButton.Size = new System.Drawing.Size(189, 23);
             this.DepositButton.TabIndex = 17;
@@ -67,7 +68,7 @@
             // 
             // WithdrawButton
             // 
-            this.WithdrawButton.Location = new System.Drawing.Point(157, 200);
+            this.WithdrawButton.Location = new System.Drawing.Point(303, 200);
             this.WithdrawButton.Name = "WithdrawButton";
             this.WithdrawButton.Size = new System.Drawing.Size(189, 23);
             this.WithdrawButton.TabIndex = 18;
@@ -77,7 +78,7 @@
             // 
             // MoneyTransferButton
             // 
-            this.MoneyTransferButton.Location = new System.Drawing.Point(157, 245);
+            this.MoneyTransferButton.Location = new System.Drawing.Point(303, 245);
             this.MoneyTransferButton.Name = "MoneyTransferButton";
             this.MoneyTransferButton.Size = new System.Drawing.Size(189, 23);
             this.MoneyTransferButton.TabIndex = 19;
@@ -85,11 +86,22 @@
             this.MoneyTransferButton.UseVisualStyleBackColor = true;
             this.MoneyTransferButton.Click += new System.EventHandler(this.MoneyTransferButton_Click);
             // 
+            // LogOutButton
+            // 
+            this.LogOutButton.Location = new System.Drawing.Point(303, 292);
+            this.LogOutButton.Name = "LogOutButton";
+            this.LogOutButton.Size = new System.Drawing.Size(189, 23);
+            this.LogOutButton.TabIndex = 32;
+            this.LogOutButton.Text = "Logout";
+            this.LogOutButton.UseVisualStyleBackColor = true;
+            this.LogOutButton.Click += new System.EventHandler(this.LogOutButton_Click);
+            // 
             // OptionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.LogOutButton);
             this.Controls.Add(this.MoneyTransferButton);
             this.Controls.Add(this.WithdrawButton);
             this.Controls.Add(this.DepositButton);
@@ -109,5 +121,6 @@
         private System.Windows.Forms.Button DepositButton;
         private System.Windows.Forms.Button WithdrawButton;
         private System.Windows.Forms.Button MoneyTransferButton;
+        private System.Windows.Forms.Button LogOutButton;
     }
 }

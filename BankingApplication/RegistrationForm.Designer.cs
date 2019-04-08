@@ -43,6 +43,7 @@
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.SubmitButton = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.MessageLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -54,7 +55,6 @@
             this.label1.Size = new System.Drawing.Size(195, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Registration";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // NameLabel
             // 
@@ -149,6 +149,7 @@
             // 
             this.PasswordTextBox.Location = new System.Drawing.Point(227, 213);
             this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.PasswordChar = '*';
             this.PasswordTextBox.Size = new System.Drawing.Size(216, 20);
             this.PasswordTextBox.TabIndex = 12;
             // 
@@ -173,11 +174,20 @@
             this.linkLabel1.Text = "Login";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // MessageLabel
+            // 
+            this.MessageLabel.AutoSize = true;
+            this.MessageLabel.Location = new System.Drawing.Point(224, 300);
+            this.MessageLabel.Name = "MessageLabel";
+            this.MessageLabel.Size = new System.Drawing.Size(0, 13);
+            this.MessageLabel.TabIndex = 22;
+            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.MessageLabel);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.PasswordTextBox);
@@ -217,6 +227,7 @@
         private System.Windows.Forms.TextBox PasswordTextBox;
         private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label MessageLabel;
     }
 }
 

@@ -82,6 +82,7 @@
     <Compile Include="PassbookForm.Designer.cs">
       <DependentUpon>PassbookForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Record.cs" />
     <Compile Include="RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
